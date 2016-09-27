@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="{% static "js/jquery-1.9.1.min.js" %}"></script>
+</head>
+<body>
+    <button id="ledon" class="led">Turn On</button> <!-- button for pin 11 -->
+	<button id="ledoff" class="led">Turn Off</button> <!-- button for pin 12 -->
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".led").click(function(){
+				var p = $(this).attr('id');
+				if(p=="ledon")
+                    $.get("/led/?led=1"); // execute get request
+                else
+                    $.get("/led/?led=0"); // execute get request
+			});
+		});
+	</script>
+</body>
+</html>
